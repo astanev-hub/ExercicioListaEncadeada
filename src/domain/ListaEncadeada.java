@@ -1,4 +1,4 @@
-import domain.Node;
+package domain;
 
 public class ListaEncadeada {
     private Node primeiro, ultimo;
@@ -40,6 +40,7 @@ public class ListaEncadeada {
         this.ultimo = newNode;
     }
 
+   
     //REMOVER NODE
     //Implementar um método para remover da lista um elemento informado.
     // Exemplo: Em uma lista com [1,5,20,3,15], quero conseguir remover o elemento "20"
@@ -47,6 +48,38 @@ public class ListaEncadeada {
 
     //REMOVER NODE
 
+    public void removerNode(int elemento) {
+    	Node anteriorNode = posicionarNodeAnterior(elemento);
+    	
+    	if (anteriorNode != null) { //verifico se encontrou o elemento
+    		if (anteriorNode.getElemento() == elemento) { //vejo se o elemento está no primeiro nó
+    			primeiro = anteriorNode.getProximo(); 
+    		} else {
+    			anteriorNode.setProximo(anteriorNode.getProximo().getProximo()); //se encontrei, pego o nó anterior e aponto para o próximo nó do nó do elemento
+    		}	
+    	} else { 
+    		System.out.println("Elemento " + elemento + " não encontrado!");
+    	}
+    }
+    
+    public Node posicionarNodeAnterior(int elemento) {
+    	Node nodeAnt = primeiro;
+        Node nodeAtual = primeiro;
+        
+        if (primeiro == null) return null; //verifica lista vazia
+        
+        if (nodeAtual.getProximo() == null) return nodeAtual; //verifica se o elemento está no primeiro nó
+        
+        while (nodeAnt.getProximo() != null) {
+        	if (nodeAtual.getElemento() == elemento) { 
+            	return nodeAnt;
+            }
+        	nodeAnt = nodeAtual;
+        	nodeAtual = nodeAtual.getProximo();
+        }
+        return null;
+    }
+    
     public int contarNodes() {
         int tamanho = 0;
         Node nodeTemp = primeiro;
