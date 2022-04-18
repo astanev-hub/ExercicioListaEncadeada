@@ -68,7 +68,11 @@ public class ListaEncadeada {
         
         if (primeiro == null) return null; //verifica lista vazia
         
-        if (nodeAtual.getProximo() == null) return nodeAtual; //verifica se o elemento está no primeiro nó
+        if (nodeAtual.getProximo() == null) { //verifica se só existe um nó
+        	if (nodeAtual.getElemento() == elemento) {
+            	return nodeAtual; //verifica se o elemento está nesse único nó       		
+        	} 
+        }
         
         while (nodeAnt.getProximo() != null) {
         	if (nodeAtual.getElemento() == elemento) { 
