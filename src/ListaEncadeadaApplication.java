@@ -21,6 +21,11 @@ public class ListaEncadeadaApplication {
         list.visualizarLista();
         System.out.println("Tamanho total da lista: " + list.contarNodes());      
         
+        list.inserirFinal(8);
+
+        list.visualizarLista();
+        System.out.println("Tamanho total da lista: " + list.contarNodes());
+
 
         //***********************************
         //Java LinkedList

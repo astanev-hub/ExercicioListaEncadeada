@@ -56,6 +56,9 @@ public class ListaEncadeada {
     			primeiro = anteriorNode.getProximo(); 
     		} else {
     			anteriorNode.setProximo(anteriorNode.getProximo().getProximo()); //se encontrei, pego o nó anterior e aponto para o próximo nó do nó do elemento
+    			if (anteriorNode.getProximo() == null) {
+    				ultimo = anteriorNode;
+    			}
     		}	
     	} else { 
     		System.out.println("Elemento " + elemento + " não encontrado!");
